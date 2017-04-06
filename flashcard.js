@@ -9,21 +9,25 @@ var question = "Here is a question";
 // simple scoring variable, 0 is correct, 1 is incorrect
 var score = [0,0];
 
-// Our ClozeCard constructor.
+// Our 100% verified scope safe ClozeCard constructor. Works with or without the 'new' operator
 function ClozeCard(text, cloze) {
-    this.text = text;
-    this.cloze = cloze;
-    this.deleted = function (){
-        console.log(cloze);
-    };
-    this.partial = function (){
-        question = text.replace(cloze, "______");
-        // Alert to an error if the cloze word is not in the next
-        if (!text.includes(cloze))
-        {
-            console.log("JSON file error. Word not found!");
-        }
-    };
+    if (this instanceof ClozeCard) {
+        this.text = text;
+        this.cloze = cloze;
+        this.deleted = function () {
+            console.log(cloze);
+        };
+        this.partial = function () {
+            question = text.replace(cloze, "______");
+            // Alert to an error if the cloze word is not in the next
+            if (!text.includes(cloze)) {
+                console.log("JSON file error. Word not found!");
+            }
+        };
+    }
+    else {
+        return new ClozeCard(text, cloze);
+    }
 };
 
 // import the JSON data from cards.json. This can be any JSON object for new questions.
@@ -71,8 +75,9 @@ function clozequiz(){
     if (i < cards.data.length)
     {
         // Import the JSON data into the ClozeCard constructor and run the partial function to hide the Cloze word.
-        var flash = new ClozeCard(cards.data[i].q, cards.data[i].cloze)
+        var flash = ClozeCard(cards.data[i].q, cards.data[i].cloze);
         flash.partial();
+
         inquirer.prompt([
             {
                 name: "useranswer",
