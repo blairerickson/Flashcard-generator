@@ -11,6 +11,17 @@
       "front": "Which artist won the Grammy for Album of the Year with her album '1989' at the 2016 Grammy Awards? "
     },
     {
+      "q": "The X-Files is a cult TV show from the 1990's, featuring David Duchovny and Gillian Anderson.",
+      "cloze": "X-Files",
+      "front": "What's the cult TV show from the 1990's, featuring David Duchovny and Gillian Anderson?"
+    },
+  {
+    "q": "The actor Daniel Craig made his debut as James Bond in the film Casino Royale in 2006.",
+    "cloze": "Daniel Craig",
+    "front": "Which actor made his debut as James Bond in the film Casino Royale in 2006?"
+  },
+
+  {
       "q": "Jaws was directed by Steven Spielberg.",
       "cloze": "Steven Spielberg",
       "front": "Who directed the 1975 film Jaws?"

@@ -30,15 +30,42 @@ var jsonContent = fs.readFileSync("cards.json");
 // Define to JSON type
 var cards = JSON.parse(jsonContent);
 
+quizselect();
 
 
 
-console.log("TOTAL QUESTIONS:" + cards.data.length)
-quiz();
+// this function lets us choose whether we're doing a cloze type flashcard quiz or a front back style.
+// The JSON object has both embedded in the data.
+function quizselect()
+{
+    inquirer.prompt([
+        {
+            name: "useranswer",
+            message: "Which quiz type do you want? \n Front/Back[1] \n Hidden Word[2]\n",
+        }, ]).then(function (answers) {
+        console.log("Quiz type selected: " + answers.useranswer);
+        if (answers.useranswer == 1)
+        {
+            console.log("TOTAL QUESTIONS:" + cards.data.length)
+            basicquiz();
+        }
+        if (answers.useranswer == 2)
+        {
+            console.log("TOTAL QUESTIONS:" + cards.data.length)
+            clozequiz();
+        }
+        else
+        {
+            console.log("Sorry, try again... \n");
+            quizselect();
+        }
+    });
+};
 
-function quiz(){
+function clozequiz(){
     if (i < cards.data.length)
     {
+        // Import the JSON data into the ClozeCard constructor and run the partial function to hide the Cloze word.
         var flash = new ClozeCard(cards.data[i].q, cards.data[i].cloze)
         flash.partial();
         inquirer.prompt([
@@ -59,7 +86,7 @@ function quiz(){
                 console.log("Sorry, " + cards.data[i].cloze + " is the right answer. \n Current incorrect answers: " + score[1] )
             }
             i++;
-            quiz();
+            clozequiz();
         });
 
     }
@@ -68,3 +95,34 @@ function quiz(){
     }
 };
 
+
+function basicquiz(){
+    if (i < cards.data.length)
+    {
+        // this version of the quiz is front & back, so it doesn't use the ClozeCard constructor
+        inquirer.prompt([
+            {
+                name: "useranswer",
+                message: cards.data[i].front,
+            },
+        ]).then(function (answers) {
+            console.log("Answered:" + answers.useranswer);
+            if (answers.useranswer == cards.data[i].cloze)
+            {
+                score[0]++;
+                console.log("Correct! Score + 1 \n Current correct answers: " + score[0] )
+            }
+            else
+            {
+                score[1]++;
+                console.log("Sorry, " + cards.data[i].cloze + " is the right answer. \n Current incorrect answers: " + score[1] )
+            }
+            i++;
+            basicquiz();
+        });
+
+    }
+    else{
+        console.log("\n -------- Good game!  -------- \n Correct answers: " + score[0] + "\n Wrong answers:" + score[1]);
+    }
+};
