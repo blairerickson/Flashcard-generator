@@ -36,22 +36,26 @@ var cards = JSON.parse(jsonContent);
 
 
 
-var card1 = new ClozeCard("George Washington was the first president of the United States", "Washington");
-
 console.log("TOTAL QUESTIONS:" + cards.data.length)
-if (i < cards.data.length)
-{
-    var flash = new ClozeCard(cards.data[i].q, cards.data[i].cloze)
-    flash.partial();
-    inquirer.prompt([
-        {
-            name: "useranswer",
-            message: question,
-        },
-    ]).then(function (answers) {
-        console.log("Answered:" + answers.useranswer);
-        i++;
-    });
+quiz();
 
-}
-;
+function quiz(){
+    if (i < cards.data.length)
+    {
+        var flash = new ClozeCard(cards.data[i].q, cards.data[i].cloze)
+        flash.partial();
+        inquirer.prompt([
+            {
+                name: "useranswer",
+                message: question,
+            },
+        ]).then(function (answers) {
+            console.log("Answered:" + answers.useranswer);
+            i++;
+            quiz();
+        });
+
+    };
+
+};
+
