@@ -25,7 +25,7 @@ function ClozeCard(text, cloze) {
     };
 };
 
-
+// import the JSON data from cards.json. This can be any JSON object for new questions.
 var jsonContent = fs.readFileSync("cards.json");
 // Define to JSON type
 var cards = JSON.parse(jsonContent);
