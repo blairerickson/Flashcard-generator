@@ -1,10 +1,12 @@
-
+// flashcard JSON reading app
+// Blair Erickon 4/1/17
 
 var inquirer = require("inquirer");
 var fs = require("fs");
 var i = -1;
 var question = "Here is a question";
 
+// simple scoring variable, 0 is correct, 1 is incorrect
 var score = [0,0];
 
 // Our ClozeCard constructor.
@@ -16,6 +18,11 @@ function ClozeCard(text, cloze) {
     };
     this.partial = function (){
         question = text.replace(cloze, "______");
+        // Alert to an error if the cloze word is not in the next
+        if (!text.includes(cloze))
+        {
+            console.log("JSON file error. Word not found!");
+        }
     };
     this.PrintCard = function () {
         console.log("------------------");
