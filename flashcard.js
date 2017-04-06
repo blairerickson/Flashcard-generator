@@ -24,12 +24,6 @@ function ClozeCard(text, cloze) {
             console.log("JSON file error. Word not found!");
         }
     };
-    this.PrintCard = function () {
-        console.log("------------------");
-        console.log(text);
-        console.log("------------------");
-
-    };
 };
 
 // import the JSON data from cards.json. This can be any JSON object for new questions.
@@ -37,6 +31,7 @@ var jsonContent = fs.readFileSync("cards.json");
 // Define to JSON type
 var cards = JSON.parse(jsonContent);
 
+// starts the game and calls the user to choose.
 quizselect();
 
 
@@ -71,6 +66,7 @@ function quizselect()
     });
 };
 
+// here is our cloze deletion type quiz function.
 function clozequiz(){
     if (i < cards.data.length)
     {
@@ -105,6 +101,7 @@ function clozequiz(){
 };
 
 
+// here is our front & back type quiz function.
 function basicquiz(){
     if (i < cards.data.length)
     {
