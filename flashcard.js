@@ -1,6 +1,4 @@
-/**
- * Flashcard-generator Created by blair on 4/1/17.
- */
+
 
 var inquirer = require("inquirer");
 var fs = require("fs");
@@ -25,6 +23,17 @@ function ClozeCard(text, cloze) {
 
     };
 };
+
+
+var cards = fs.readFileSync("cards.json");
+// Define to JSON type
+var jsonContent = JSON.parse(cards);
+// Get Value from JSON
+console.log("question1:", jsonContent.data[1].q);
+console.log("question1:", jsonContent.data[1].cloze);
+console.log("\n *EXIT* \n");
+
+
 
 var card1 = new ClozeCard("George Washington was the first president of the United States", "Washington");
 
