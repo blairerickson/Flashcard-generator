@@ -17,7 +17,6 @@ function ClozeCard(text, cloze) {
     };
     this.partial = function (){
         question = text.replace(cloze, "______");
-        console.log(question);
     };
     this.PrintCard = function () {
         console.log("------------------");
@@ -31,7 +30,7 @@ var card1 = new ClozeCard("George Washington was the first president of the Unit
 
 
 if (i < 4) {
-    question = card1.partial;
+    card1.partial();
     inquirer.prompt([
         {
             name: "answer1",
