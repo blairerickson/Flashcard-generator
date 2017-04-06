@@ -1,12 +1,14 @@
 
 {"data":[
     {
-        "q": "Thomas Jefferson was the third president of the United States",
-        "cloze": "Thomas Jefferson"
+      "q": "Thomas Jefferson was the third president of the United States",
+      "cloze": "Thomas Jefferson",
+      "front": "Who was the third president of the United States?"
     }
   , {
         "q": "John Adams was the second president of the United States",
-        "cloze": "John Adams"
+        "cloze": "John Adams",
+    "front": "Who was the second president of the United States?"
     }
     ,
     {

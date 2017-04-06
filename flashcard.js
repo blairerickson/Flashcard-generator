@@ -25,51 +25,33 @@ function ClozeCard(text, cloze) {
 };
 
 
-var cards = fs.readFileSync("cards.json");
+var jsonContent = fs.readFileSync("cards.json");
 // Define to JSON type
-var jsonContent = JSON.parse(cards);
-// Get Value from JSON
-console.log("question1:", jsonContent.data[1].q);
-console.log("question1:", jsonContent.data[1].cloze);
-console.log("\n *EXIT* \n");
+var cards = JSON.parse(jsonContent);
+// test JSON reading
+// console.log("question1:", cards.data[1].q);
+// console.log("question1:", cards.data[1].cloze);
+// console.log("question1:", cards.data[1].front);
+// console.log("\n *EXIT* \n");
 
 
 
 var card1 = new ClozeCard("George Washington was the first president of the United States", "Washington");
 
-
-if (i < 4) {
-    card1.partial();
+console.log("TOTAL QUESTIONS:" + cards.data.length)
+if (i < cards.data.length)
+{
+    var flash = new ClozeCard(cards.data[i].q, cards.data[i].cloze)
+    flash.partial();
     inquirer.prompt([
         {
-            name: "answer1",
+            name: "useranswer",
             message: question,
         },
     ]).then(function (answers) {
-        console.log("Answered:" + answers.answer1);
+        console.log("Answered:" + answers.useranswer);
         i++;
     });
 
 }
 ;
-
-
-
-// if (i < 4) {
-//
-//     inquirer.prompt([
-//         {
-//             answer1: "answer1",
-//             question: Card1.partial + "?"
-//         }
-//     ])
-//         .then(function (answers)
-//     {
-//         if (answer1 == Card1.cloze){
-//         console.log(cloze + "is correct!");
-//     }
-//     else {
-//             console.log("wrong answer");
-//         }
-//     });
-// };
