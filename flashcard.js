@@ -7,7 +7,7 @@ var question = "Here is a question";
 
 var score = [0,0];
 
-// Our ClozeCard constructor. 
+// Our ClozeCard constructor.
 function ClozeCard(text, cloze) {
     this.text = text;
     this.cloze = cloze;
@@ -64,7 +64,7 @@ function quiz(){
 
     }
     else{
-        console.log("\n Good game! \n Correct answers: " + score[0] + "\n Wrong answers:" + score[1]);
+        console.log("\n -------- Good game!  -------- \n Correct answers: " + score[0] + "\n Wrong answers:" + score[1]);
     }
 };
 

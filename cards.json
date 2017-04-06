@@ -1,18 +1,28 @@
 
 {"data":[
     {
-      "q": "Jaws was directed by Steven Spielberg",
+        "q": "The Legend of Zelda was an action RPG first released on Nintendo in 1986.",
+        "cloze": "Zelda",
+    "front": "What classic action RPG game was first released on Nintendo in 1986?"
+    },
+    {
+      "q": "Taylor Swift won the Grammy for Album of the Year with her album '1989' at the 2016 Grammy Awards.",
+      "cloze": "Taylor Swift",
+      "front": "Which artist won the Grammy for Album of the Year with her album '1989' at the 2016 Grammy Awards? "
+    },
+    {
+      "q": "Jaws was directed by Steven Spielberg.",
       "cloze": "Steven Spielberg",
       "front": "Who directed the 1975 film Jaws?"
-    }
-  , {
-        "q": "John Adams was the second president of the United States",
-        "cloze": "John Adams",
-    "front": "Who was the second president of the United States?"
-    }
-    ,
+    },
     {
-        "q": "James Madison was the fourth president of the United States",
-        "cloze": "James Madison"
+    "q": "Deadpool is the 2016 superhero film about Wade Wilson hunting down the man who scarred his body.",
+    "cloze": "Deadpool",
+    "front": "This 2016 superhero film sees our hero Wade Wilson hunting down the man who gave him a scarred physical appearance."
+    },
+    {
+      "q": "Gremlins is a 1984 Joe Dante film about mischievous little monsters.",
+      "cloze": "Gremlins",
+      "front": "What is the 1984 Joe Dante film about mischievous little monsters?"
     }
 ]}
