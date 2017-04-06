@@ -5,6 +5,7 @@
 var inquirer = require("inquirer");
 var fs = require("fs");
 var i = 0;
+var question = "Here is a question";
 
 var score = [0,0];
 
@@ -15,7 +16,8 @@ function ClozeCard(text, cloze) {
         console.log(cloze);
     };
     this.partial = function (){
-        var question = text.replace(cloze, "______");
+        question = text.replace(cloze, "______");
+        console.log(question);
     };
     this.PrintCard = function () {
         console.log("------------------");
@@ -25,18 +27,18 @@ function ClozeCard(text, cloze) {
     };
 };
 
-var Card1 = new ClozeCard("George Washington was the first president of the United States", "Washington");
+var card1 = new ClozeCard("George Washington was the first president of the United States", "Washington");
 
 
 if (i < 4) {
-
+    question = card1.partial;
     inquirer.prompt([
         {
             name: "answer1",
-            message: Card1.partial + "?"
+            message: question,
         },
     ]).then(function (answers) {
-        console.log("Answered")
+        console.log("Answered:" + answers.answer1);
         i++;
     });
 
