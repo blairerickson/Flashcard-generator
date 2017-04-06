@@ -32,17 +32,8 @@ if (i < 4) {
 
     inquirer.prompt([
         {
-            name: "name",
-            message: "What is player name?"
-        }, {
-            name: "position",
-            message: "What is current position?"
-        }, {
-            name: "offense",
-            message: "Offense stats?"
-        }, {
-            name: "defense",
-            message: "Defense stats?"
+            name: "answer1",
+            message: Card1.partial + "?"
         },
     ]).then(function (answers) {
         console.log("Answered")
