@@ -2,7 +2,7 @@
 
 var inquirer = require("inquirer");
 var fs = require("fs");
-var i = 0;
+var i = -1;
 var question = "Here is a question";
 
 var score = [0,0];
@@ -46,15 +46,17 @@ function quizselect()
         console.log("Quiz type selected: " + answers.useranswer);
         if (answers.useranswer == 1)
         {
+            i=0;
             console.log("TOTAL QUESTIONS:" + cards.data.length)
             basicquiz();
         }
         if (answers.useranswer == 2)
         {
+            i=0;
             console.log("TOTAL QUESTIONS:" + cards.data.length)
             clozequiz();
         }
-        else
+        else if (i<0)
         {
             console.log("Sorry, try again... \n");
             quizselect();
